@@ -40,7 +40,26 @@ Once the API Key is available to Videodrome, retrieve the metadata of a video us
 video = Videodrome::Video.new("https://youtube.com/watch?v=NZ8RiLLt6yg")
 video.title # "The Mercedes-Benz CLA (a car commercial)"
 video.published_at # Thu Sep 05 21:01:57 UTC 2013
+video.thumbnail["url"] # "https://i.ytimg.com/vi/NZ8RiLLt6yg/sddefault.jpg"
+video.embed_html # <iframe type='text/html' src='http://www.youtube.com/embed/NZ8RiLLt6yg' … />
 ```
+
+URL short versions are also supported:
+
+```
+Videodrome::Video.new("https://youtu.be/NZ8RiLLt6yg")
+```
+
+Customize the API call by proving an option hash to the initialization. For details on the parameters you can use please check [the Videos:list documentation](https://developers.google.com/youtube/v3/docs/videos/list#part).
+
+```
+Videodrome::Video.new("https://youtu.be/NZ8RiLLt6yg", :part => "snippet,player,contentDetails,status,fileDetails")
+```
+
+This customization can be used too to explictly provide the API key to sign the calls
+
+Videodrome::Video.new("https://youtu.be/NZ8RiLLt6yg", :key => "AIzaS…wGhuD")
+
 
 ## To-do
 

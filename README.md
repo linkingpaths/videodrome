@@ -26,17 +26,15 @@ Although Videodrome does not require any user authentication, the new Youtube AP
 
 Once you have the API key, the easiest to provide it to Videodrome is to set it up in your environment:
 
-```
+``` sh
 VIDEODROME_YOUTUBE_API_KEY="AIzaS…wGhuD"
 ```
-
-For 
 
 ## Usage
 
 Once the API Key is available to Videodrome, retrieve the metadata of a video using its URL:
 
-```
+``` ruby
 video = Videodrome::Video.new("https://youtube.com/watch?v=NZ8RiLLt6yg")
 video.title # "The Mercedes-Benz CLA (a car commercial)"
 video.published_at # Thu Sep 05 21:01:57 UTC 2013
@@ -46,19 +44,21 @@ video.embed_html # <iframe type='text/html' src='http://www.youtube.com/embed/NZ
 
 URL short versions are also supported:
 
-```
+``` ruby
 Videodrome::Video.new("https://youtu.be/NZ8RiLLt6yg")
 ```
 
 Customize the API call by proving an option hash to the initialization. For details on the parameters you can use please check [the Videos:list documentation](https://developers.google.com/youtube/v3/docs/videos/list#part).
 
-```
+``` ruby
 Videodrome::Video.new("https://youtu.be/NZ8RiLLt6yg", :part => "snippet,player,contentDetails,status,fileDetails")
 ```
 
-This customization can be used too to explictly provide the API key to sign the calls
+This customization can be used too to explictly provide the API key to sign the calls:
 
+``` ruby
 Videodrome::Video.new("https://youtu.be/NZ8RiLLt6yg", :key => "AIzaS…wGhuD")
+```
 
 
 ## To-do

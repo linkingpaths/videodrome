@@ -17,7 +17,7 @@ describe Videodrome::Video do
           "standard" => { "url" => "https://i.ytimg.com/vi/NZ8RiLLt6yg/sddefault.jpg", "width" => 640, "height" => 480 }
         },
         :embeddable => true,
-        :embed_html => "<iframe type='text/hftml' src='http://www.youtube.com/embed/NZ8RiLLt6yg' width='640' height='360' frameborder='0' allowfullscreen='true'/>"
+        :embed_html => "<iframe type='text/html' src='http://www.youtube.com/embed/NZ8RiLLt6yg' width='640' height='360' frameborder='0' allowfullscreen='true'/>"
       }
     end
     describe "#published_at" do
@@ -39,6 +39,13 @@ describe Videodrome::Video do
     end
     describe "#embed_html" do
       it("returns the embeddable player iframe") { expect(video.embed_html).to eq attrs[:embed_html] }
+    end
+  end
+  context "given a video with no standard thumbnail" do
+    let(:url) { "https://youtube.com/watch?v=eyNIHWawwXk" }
+    describe "#thumbnails" do
+      it("returns no standard thumbnail") { expect(video.thumbnail).to be nil }
+      it("returns others thumbnails") { expect(video.thumbnails.size).to be > 0 }
     end
   end
 

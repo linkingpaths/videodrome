@@ -30,7 +30,7 @@ module Videodrome
     end
 
     def thumbnail(size = "standard")
-      thumbnails.find { |k, _| k == size }[1]
+      thumbnails[size]
     end
 
     def embed_html

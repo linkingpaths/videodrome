@@ -24,7 +24,7 @@ Or install it yourself as:
 
 Although Videodrome does not require any user authentication, the new Youtube API requires to sign all calls with an API key, even if you are accessing only public data. Please follow the steps at [Obtaining authorization credentials](https://developers.google.com/youtube/registering_an_application) to generate a server key. 
 
-Once you have the API key, the easiest to provide it to Videodrome is to set it up in your environment:
+Once you have the API key, the easiest way to provide it to Videodrome is to set it up in your environment:
 
 ``` sh
 VIDEODROME_YOUTUBE_API_KEY="AIzaS…wGhuD"

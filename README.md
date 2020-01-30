@@ -60,7 +60,6 @@ This customization can be used too to explictly provide the API key to sign the 
 Videodrome::Video.new("https://youtu.be/NZ8RiLLt6yg", :key => "AIzaS…wGhuD")
 ```
 
-
 ## To-do
 
 Provide mocks to prevent real requests to the Youtube API when running the specs.

@@ -2,9 +2,9 @@
 
 Access metadata of **public videos** on Youtube using YouTube Data API v3. Please see the documentation for this API at https://developers.google.com/youtube/v3/.
 
-Videodrome is designed to be minimal on its features and dependencies and to work with all Ruby versions (>= 1.8.6). Videodrome can only access public information since it **does not provides** any authentication method to access to [private user data](https://developers.google.com/youtube/v3/guides/authentication). 
+Videodrome is designed to be minimal in its features and dependencies and to work with any Ruby versions > 2. Videodrome can only access public information since it **does not provides** any authentication method to access [private user data](https://developers.google.com/youtube/v3/guides/authentication).
 
-If you want a fully featured YouTube API client please check the excelent [yt](https://github.com/Fullscreen/yt) gem.
+If you want a fully-featured YouTube API client, please check the excellent [yt](https://github.com/Fullscreen/yt) gem.
 
 ## Installation
 
@@ -22,11 +22,11 @@ Or install it yourself as:
 
 ## Setup
 
-Although Videodrome does not require any user authentication, the new Youtube API requires to sign all calls with an API key, even if you are accessing only public data. Please follow the steps at [Obtaining authorization credentials](https://developers.google.com/youtube/registering_an_application) to generate a server key. 
+Although Videodrome does not require any user authentication, the new Youtube API requires to sign all calls with an API key, even if you are accessing only public data. To generate a server key, please follow the steps at [Obtaining authorization credentials](https://developers.google.com/youtube/registering_an_application).
 
 Once you have the API key, the easiest way to provide it to Videodrome is to set it up in your environment:
 
-``` sh
+```sh
 VIDEODROME_YOUTUBE_API_KEY="AIzaS…wGhuD"
 ```
 
@@ -34,7 +34,7 @@ VIDEODROME_YOUTUBE_API_KEY="AIzaS…wGhuD"
 
 Once the API Key is available to Videodrome, retrieve the metadata of a video using its URL:
 
-``` ruby
+```ruby
 video = Videodrome::Video.new("https://youtube.com/watch?v=NZ8RiLLt6yg")
 video.title # "The Mercedes-Benz CLA (a car commercial)"
 video.published_at # Thu Sep 05 21:01:57 UTC 2013
@@ -44,19 +44,19 @@ video.embed_html # <iframe type='text/html' src='http://www.youtube.com/embed/NZ
 
 URL short versions are also supported:
 
-``` ruby
+```ruby
 Videodrome::Video.new("https://youtu.be/NZ8RiLLt6yg")
 ```
 
 Customize the API call by proving an option hash to the initialization. For details on the parameters you can use please check [the Videos:list documentation](https://developers.google.com/youtube/v3/docs/videos/list#part).
 
-``` ruby
+```ruby
 Videodrome::Video.new("https://youtu.be/NZ8RiLLt6yg", :part => "snippet,player,contentDetails,status,fileDetails")
 ```
 
 This customization can be used too to explictly provide the API key to sign the calls:
 
-``` ruby
+```ruby
 Videodrome::Video.new("https://youtu.be/NZ8RiLLt6yg", :key => "AIzaS…wGhuD")
 ```
 
